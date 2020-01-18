@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">safeCity</string>
+    <string name="signal_problem">signal a problem</string>
+    <string name="browse">browse signaled problems</string>
+    <string-array name="problem_type">
+        <item>problem1</item>
+        <item>problem1</item>
+        <item>problem1</item>
+        <item>problem1</item>
+        <item>problem1</item>
+    </string-array>
+    <string name="type">what\'s the problem?</string>
+
+</resources>
