@@ -3,6 +3,7 @@ package com.example.safecity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -22,7 +23,13 @@ public class signalProblem extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
     }
-    public void signal(){
+    public void signal(View view){
+
+    }
+    public void takePicture(View view){
+
+    }
+    public void browsePicture(View view){
 
     }
 }
