@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Quel problem voulez vous signaler ?"
+        android:text="Quel problème voulez vous signaler ?"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:typeface="normal"
