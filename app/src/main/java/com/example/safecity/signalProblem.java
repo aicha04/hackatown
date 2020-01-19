@@ -3,9 +3,12 @@ package com.example.safecity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,8 +28,11 @@ public class signalProblem extends AppCompatActivity {
     private Spinner spinner;
     public ImageView imageView;
     public ImageButton takePictureButton;
+    public  ImageButton choosePictureButton;
     private static final String[] items = {"item 1", "item 2", "item 3"};
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int IMAGE_PICK_CODE = 1000;
+    private static final int PERMISSION_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,7 @@ public class signalProblem extends AppCompatActivity {
         dropdown.setAdapter(adapter);
         takePictureButton = (ImageButton) findViewById(R.id.camera_button);
         imageView = (ImageView) findViewById(R.id.imageView);
+        choosePictureButton = (ImageButton) findViewById(R.id.gallery_button);
     }
     public void signal(View view){
 
@@ -48,14 +55,25 @@ public class signalProblem extends AppCompatActivity {
     }
 
     public void browsePicture(View view){
-
+        pickImageFromGallery();
     }
+
+    private void  pickImageFromGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/");
+        startActivityForResult(intent, IMAGE_PICK_CODE);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
+        }
+
+        if (requestCode ==IMAGE_PICK_CODE && resultCode == RESULT_OK) {
+            imageView.setImageURI(data.getData());
         }
     }
 
